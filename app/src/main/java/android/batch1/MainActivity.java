@@ -1,15 +1,36 @@
 package android.batch1;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        System.out.println("Hello Everyone");
+        login = findViewById(R.id.main_login);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("Login Successfully");
+                Log.d("RESPONSE","Login Successfully");
+                Log.e("RESPONSE","Login Successfully");
+                Log.w("RESPONSE","Login Successfully");
+
+                Toast.makeText(MainActivity.this,R.string.login_message,Toast.LENGTH_LONG).show();
+                Snackbar.make(view,R.string.login_message,Snackbar.LENGTH_SHORT).show();
+            }
+        });
     }
 }
