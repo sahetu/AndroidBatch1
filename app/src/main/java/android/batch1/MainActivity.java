@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,11 +20,22 @@ public class MainActivity extends AppCompatActivity {
 
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
+    TextView createAccount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         login = findViewById(R.id.main_login);
+
+        createAccount = findViewById(R.id.main_create_account);
+
+        createAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CommonMethod(MainActivity.this, SignupActivity.class);
+            }
+        });
 
         email = findViewById(R.id.main_email);
         password = findViewById(R.id.main_password);

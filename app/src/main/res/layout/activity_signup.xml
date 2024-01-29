@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:paddingHorizontal="@dimen/_30sdp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/text_bold_15"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:text="@string/username" />
+
+            <EditText
+                android:id="@+id/signup_username"
+                style="@style/edit_15"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableRight="@drawable/ic_user"
+                android:hint="@string/enter_user"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                style="@style/text_bold_15"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/name" />
+
+            <EditText
+                android:id="@+id/signup_name"
+                style="@style/edit_15"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableRight="@drawable/ic_user"
+                android:hint="@string/enter_name"
+                android:inputType="textPersonName" />
+
+            <TextView
+                style="@style/text_bold_15"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/signup_email"
+                style="@style/edit_15"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableRight="@drawable/ic_user"
+                android:hint="@string/enter_email"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                style="@style/text_bold_15"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/contact" />
+
+            <EditText
+                android:maxLength="10"
+                android:id="@+id/signup_contact"
+                style="@style/edit_15"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableRight="@drawable/ic_user"
+                android:hint="@string/enter_contact"
+                android:inputType="phone" />
+
+            <TextView
+                style="@style/text_bold_15"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/password" />
+
+            <EditText
+                android:id="@+id/signup_password"
+                style="@style/edit_15"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableRight="@drawable/ic_lock"
+                android:hint="@string/enter_password"
+                android:inputType="textPassword"
+                android:maxLength="12" />
+
+            <TextView
+                style="@style/text_bold_15"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/confirm_password" />
+
+            <EditText
+                android:id="@+id/signup_confirm_password"
+                style="@style/edit_15"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableRight="@drawable/ic_lock"
+                android:hint="@string/enter_confirm_password"
+                android:inputType="textPassword"
+                android:maxLength="12" />
+
+            <TextView
+                style="@style/text_bold_15"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/gender" />
+
+            <RadioGroup
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:layout_weight="1"
+                    android:id="@+id/signup_male"
+                    android:text="Male"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RadioButton
+                    android:layout_weight="1"
+                    android:id="@+id/signup_female"
+                    android:text="Female"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RadioGroup>
+
+            <Button
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:id="@+id/signup_button"
+                style="@style/button_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@string/signup" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
