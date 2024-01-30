@@ -12,10 +12,10 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:paddingHorizontal="@dimen/_30sdp"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_30sdp">
 
             <TextView
                 style="@style/text_bold_15"
@@ -62,13 +62,13 @@
                 android:text="@string/contact" />
 
             <EditText
-                android:maxLength="10"
                 android:id="@+id/signup_contact"
                 style="@style/edit_15"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableRight="@drawable/ic_user"
                 android:hint="@string/enter_contact"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:maxLength="10" />
 
             <TextView
                 style="@style/text_bold_15"
@@ -104,34 +104,50 @@
                 android:text="@string/gender" />
 
             <RadioGroup
-                android:weightSum="2"
-                android:orientation="horizontal"
+                android:id="@+id/signup_gender"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
 
                 <RadioButton
-                    android:layout_weight="1"
+                    style="@style/radio_15"
                     android:id="@+id/signup_male"
-                    android:text="Male"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_weight="1"
+                    android:text="Male" />
 
                 <RadioButton
-                    android:layout_weight="1"
+                    style="@style/radio_15"
                     android:id="@+id/signup_female"
-                    android:text="Female"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_weight="1"
+                    android:text="Female"/>
 
             </RadioGroup>
 
+            <TextView
+                style="@style/text_bold_15"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/city" />
+
+            <Spinner
+                android:id="@+id/signup_city"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/signup_check"
+                style="@style/checkbox_15"
+                android:text="Terms &amp; Conditions"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
             <Button
-                android:layout_marginBottom="@dimen/_20sdp"
                 android:id="@+id/signup_button"
                 style="@style/button_16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
                 android:text="@string/signup" />
 
         </LinearLayout>
