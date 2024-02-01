@@ -10,7 +10,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class CommonMethod {
 
     CommonMethod(Context activity, String message){
-        Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 
     CommonMethod(View view,String message){

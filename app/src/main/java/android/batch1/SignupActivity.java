@@ -2,6 +2,7 @@ package android.batch1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
@@ -226,10 +227,17 @@ public class SignupActivity extends AppCompatActivity {
                     new CommonMethod(SignupActivity.this,"Please Accept Terms & Conditions");
                 }
                 else{
-                    String insertQuery = "INSERT INTO USERS VALUES(NULL,'"+username.getText().toString()+"','"+name.getText().toString()+"','"+email.getText().toString()+"','"+contact.getText().toString()+"','"+password.getText().toString()+"','"+sGender+"','"+sCity+"')";
-                    sqlDb.execSQL(insertQuery);
-                    new CommonMethod(SignupActivity.this,"Signup Successfully");
-                    onBackPressed();
+                    String selectQuery = "SELECT * FROM USERS WHERE USERNAME='"+username.getText().toString()+"' OR EMAIL='"+email.getText().toString()+"' OR CONTACT='"+contact.getText().toString()+"'";
+                    Cursor cursor = sqlDb.rawQuery(selectQuery,null);
+                    if(cursor.getCount()>0){
+                        new CommonMethod(SignupActivity.this,"User Already Exists");
+                    }
+                    else{
+                        String insertQuery = "INSERT INTO USERS VALUES(NULL,'"+username.getText().toString()+"','"+name.getText().toString()+"','"+email.getText().toString()+"','"+contact.getText().toString()+"','"+password.getText().toString()+"','"+sGender+"','"+sCity+"')";
+                        sqlDb.execSQL(insertQuery);
+                        new CommonMethod(SignupActivity.this,"Signup Successfully");
+                        onBackPressed();
+                    }
                 }
             }
         });
