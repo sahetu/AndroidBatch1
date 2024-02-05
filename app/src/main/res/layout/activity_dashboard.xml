@@ -8,11 +8,11 @@
     tools:context=".DashboardActivity">
 
     <LinearLayout
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_gravity="center"
-        android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:gravity="center">
 
         <TextView
             style="@style/text_14"
@@ -24,5 +24,19 @@
             android:layout_marginLeft="@dimen/_2sdp" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/dashboard_profile"
+        style="@style/button_16"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Profile" />
+
+    <Button
+        android:id="@+id/dashboard_logout"
+        style="@style/button_16"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Logout" />
 
 </LinearLayout>

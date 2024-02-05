@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         new CommonMethod(MainActivity.this,DashboardActivity.class);
+                        finish();
                     }
                     else{
                         new CommonMethod(MainActivity.this,"Login Unsuccessfully");

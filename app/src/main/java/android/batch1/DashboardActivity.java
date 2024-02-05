@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class DashboardActivity extends AppCompatActivity {
 
     TextView email;
     SharedPreferences sp;
+
+    Button logout,profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,25 @@ public class DashboardActivity extends AppCompatActivity {
                         sp.getString(ConstantSp.GENDER,"")+"\n"+
                         sp.getString(ConstantSp.CITY,"")
         );
+
+        logout = findViewById(R.id.dashboard_logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //sp.edit().remove(ConstantSp.ID);
+                sp.edit().clear().commit();
+                new CommonMethod(DashboardActivity.this, MainActivity.class);
+                finish();
+            }
+        });
+
+        profile = findViewById(R.id.dashboard_profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CommonMethod(DashboardActivity.this, ProfileActivity.class);
+            }
+        });
 
     }
 }

@@ -23,4 +23,7 @@
     <string name="gender">Gender</string>
     <string name="city">City</string>
 
+    <string name="edit_profile">Edit Profile</string>
+    <string name="submit">Submit</string>
+
 </resources>
