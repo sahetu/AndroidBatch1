@@ -15,7 +15,7 @@ public class DashboardActivity extends AppCompatActivity {
     TextView email;
     SharedPreferences sp;
 
-    Button logout, profile, deleteProfile, userDataList;
+    Button logout, profile, deleteProfile, userDataList,userCustomList;
     SQLiteDatabase sqlDb;
 
     @Override
@@ -90,6 +90,15 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new CommonMethod(DashboardActivity.this, UserDataSimpleListActivity.class);
+            }
+        });
+
+        userCustomList = findViewById(R.id.dashboard_custom_user_data_list);
+
+        userCustomList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CommonMethod(DashboardActivity.this,CustomUserListActivity.class);
             }
         });
 

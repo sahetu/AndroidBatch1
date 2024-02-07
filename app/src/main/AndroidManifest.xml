@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AndroidBatch1"
         tools:targetApi="31">
         <activity
+            android:name=".CustomUserListActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserDataSimpleListActivity"
             android:exported="false" />
         <activity
