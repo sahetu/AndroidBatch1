@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_180sdp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_marginVertical="@dimen/_5sdp"
+    android:background="@drawable/custom_bg_myntra"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp">
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:id="@+id/custom_myntra_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp" />
+
+    <TextView
+        android:id="@+id/custom_myntra_name"
+        style="@style/text_14"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/custom_myntra_offer"
+        style="@style/text_bold_15"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/custom_myntra_shop"
+        style="@style/text_14"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="Shop Now"
+        android:textColor="@color/white" />
+
+</LinearLayout>
