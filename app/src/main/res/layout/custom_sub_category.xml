@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_marginVertical="@dimen/_5sdp"
+    app:cardCornerRadius="@dimen/_5sdp"
+    app:cardElevation="@dimen/_3sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/custom_sub_category_image"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp" />
+
+        <RelativeLayout
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/custom_sub_category_total_layout"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/custom_sub_category_total_deals"
+                    style="@style/text_10" />
+
+                <View
+                    android:background="@color/black"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"/>
+
+                <TextView
+                    android:id="@+id/custom_sub_category_free_deals"
+                    style="@style/text_10" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_above="@id/custom_sub_category_total_layout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/custom_sub_category_name"
+                    style="@style/text_bold_15" />
+
+                <TextView
+                    android:id="@+id/custom_sub_category_outlets"
+                    style="@style/text_10" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

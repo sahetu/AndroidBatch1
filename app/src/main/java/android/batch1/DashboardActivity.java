@@ -15,7 +15,7 @@ public class DashboardActivity extends AppCompatActivity {
     TextView email;
     SharedPreferences sp;
 
-    Button logout, profile, deleteProfile, userDataList,userCustomList,userRecyclerview,myntraCat;
+    Button logout, profile, deleteProfile, userDataList,userCustomList,userRecyclerview,myntraCat,subCatTask,activityFragment;
     SQLiteDatabase sqlDb;
 
     @Override
@@ -115,6 +115,22 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new CommonMethod(DashboardActivity.this, MyntraCategoryActivity.class);
+            }
+        });
+
+        subCatTask = findViewById(R.id.dashboard_recycler_sub_category);
+        subCatTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CommonMethod(DashboardActivity.this,SubCategoryCouponActivity.class);
+            }
+        });
+
+        activityFragment = findViewById(R.id.dashboard_recycler_activity_fragment);
+        activityFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CommonMethod(DashboardActivity.this,ActivityToFragmentActivity.class);
             }
         });
 

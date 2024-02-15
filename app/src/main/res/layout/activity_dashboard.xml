@@ -54,6 +54,20 @@
         android:text="Myntra Category" />
 
     <Button
+        android:id="@+id/dashboard_recycler_sub_category"
+        style="@style/button_16"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Sub Category Task" />
+
+    <Button
+        android:id="@+id/dashboard_recycler_activity_fragment"
+        style="@style/button_16"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Activity To Fragment" />
+
+    <Button
         android:id="@+id/dashboard_profile"
         style="@style/button_16"
         android:layout_marginHorizontal="@dimen/_20sdp"
