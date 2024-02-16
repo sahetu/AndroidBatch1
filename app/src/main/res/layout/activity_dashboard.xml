@@ -68,6 +68,20 @@
         android:text="Activity To Fragment" />
 
     <Button
+        android:id="@+id/dashboard_recycler_tab_layout"
+        style="@style/button_16"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Tab Layout" />
+
+    <Button
+        android:id="@+id/dashboard_recycler_bottom_nav"
+        style="@style/button_16"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Bottom Navigation" />
+
+    <Button
         android:id="@+id/dashboard_profile"
         style="@style/button_16"
         android:layout_marginHorizontal="@dimen/_20sdp"

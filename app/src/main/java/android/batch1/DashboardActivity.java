@@ -1,11 +1,13 @@
 package android.batch1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,13 +17,16 @@ public class DashboardActivity extends AppCompatActivity {
     TextView email;
     SharedPreferences sp;
 
-    Button logout, profile, deleteProfile, userDataList,userCustomList,userRecyclerview,myntraCat,subCatTask,activityFragment;
+    Button logout, profile, deleteProfile, userDataList,userCustomList,userRecyclerview,myntraCat,subCatTask,activityFragment,tabLayout,bottomNav;
     SQLiteDatabase sqlDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        /*getSupportActionBar().setTitle("Dashboard");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
         sp = getSharedPreferences(ConstantSp.PREF, MODE_PRIVATE);
 
@@ -134,5 +139,30 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        tabLayout = findViewById(R.id.dashboard_recycler_tab_layout);
+        tabLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CommonMethod(DashboardActivity.this, TabDemoActivity.class);
+            }
+        });
+
+        bottomNav = findViewById(R.id.dashboard_recycler_bottom_nav);
+        bottomNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CommonMethod(DashboardActivity.this, BottomNavActivity.class);
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
