@@ -8,7 +8,7 @@
 
     <style name="Theme.AndroidBatch1" parent="Base.Theme.AndroidBatch1" />
 
-    <style name="bottomNavTheme" parent="Theme.AppCompat.Light.DarkActionBar"/>
+    <style name="bottomNavTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
 
     <style name="text_bold_15" parent="Widget.AppCompat.TextView">
         <item name="android:layout_width">wrap_content</item>
@@ -67,5 +67,14 @@
         <item name="android:textSize">@dimen/_15sdp</item>
         <item name="buttonTint">@color/blue</item>
     </style>
+
+    <style name="NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

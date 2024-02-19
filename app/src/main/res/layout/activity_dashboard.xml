@@ -7,99 +7,117 @@
     android:orientation="vertical"
     tools:context=".DashboardActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:gravity="center">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
-            style="@style/text_14"
-            android:text="Welcome" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/dashboard_email"
-            style="@style/text_bold_15"
-            android:layout_marginLeft="@dimen/_2sdp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:gravity="center">
 
-    </LinearLayout>
+                <TextView
+                    style="@style/text_14"
+                    android:text="Welcome" />
 
-    <Button
-        android:id="@+id/dashboard_user_data_list"
-        style="@style/button_16"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="User Data With Listview" />
+                <TextView
+                    android:id="@+id/dashboard_email"
+                    style="@style/text_bold_15"
+                    android:layout_marginLeft="@dimen/_2sdp" />
 
-    <Button
-        android:id="@+id/dashboard_custom_user_data_list"
-        style="@style/button_16"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="User Custom Listview" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/dashboard_recycler_data_list"
-        style="@style/button_16"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="User Recyclerview" />
+            <Button
+                android:id="@+id/dashboard_user_data_list"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="User Data With Listview" />
 
-    <Button
-        android:id="@+id/dashboard_recycler_myntra_category"
-        style="@style/button_16"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="Myntra Category" />
+            <Button
+                android:id="@+id/dashboard_custom_user_data_list"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="User Custom Listview" />
 
-    <Button
-        android:id="@+id/dashboard_recycler_sub_category"
-        style="@style/button_16"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="Sub Category Task" />
+            <Button
+                android:id="@+id/dashboard_recycler_data_list"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="User Recyclerview" />
 
-    <Button
-        android:id="@+id/dashboard_recycler_activity_fragment"
-        style="@style/button_16"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="Activity To Fragment" />
+            <Button
+                android:id="@+id/dashboard_recycler_myntra_category"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Myntra Category" />
 
-    <Button
-        android:id="@+id/dashboard_recycler_tab_layout"
-        style="@style/button_16"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="Tab Layout" />
+            <Button
+                android:id="@+id/dashboard_recycler_sub_category"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Sub Category Task" />
 
-    <Button
-        android:id="@+id/dashboard_recycler_bottom_nav"
-        style="@style/button_16"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="Bottom Navigation" />
+            <Button
+                android:id="@+id/dashboard_recycler_activity_fragment"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Activity To Fragment" />
 
-    <Button
-        android:id="@+id/dashboard_profile"
-        style="@style/button_16"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="Profile" />
+            <Button
+                android:id="@+id/dashboard_recycler_tab_layout"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Tab Layout" />
 
-    <Button
-        android:id="@+id/dashboard_delete_profile"
-        style="@style/button_16"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="Delete Profile" />
+            <Button
+                android:id="@+id/dashboard_recycler_bottom_nav"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Bottom Navigation" />
 
-    <Button
-        android:id="@+id/dashboard_logout"
-        style="@style/button_16"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="Logout" />
+            <Button
+                android:id="@+id/dashboard_recycler_nav"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Navigation Drawer" />
 
+            <Button
+                android:id="@+id/dashboard_profile"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Profile" />
+
+            <Button
+                android:id="@+id/dashboard_delete_profile"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Delete Profile" />
+
+            <Button
+                android:id="@+id/dashboard_logout"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Logout" />
+        </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>
