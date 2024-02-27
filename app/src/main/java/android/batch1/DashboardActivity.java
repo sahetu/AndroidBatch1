@@ -3,14 +3,21 @@ package android.batch1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -80,13 +87,13 @@ public class DashboardActivity extends AppCompatActivity {
         deleteProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String deleteQuery = "DELETE FROM USERS WHERE USERID='" + sp.getString(ConstantSp.ID, "") + "'";
-                sqlDb.execSQL(deleteQuery);
-                new CommonMethod(DashboardActivity.this, "Profile Deleted Successfully");
-
-                sp.edit().clear().commit();
-                new CommonMethod(DashboardActivity.this, MainActivity.class);
-                finish();
+                //deleteSqlite();
+                if(new ConnectionDetector(DashboardActivity.this).networkConnected()){
+                    new doDelete().execute();
+                }
+                else{
+                    new ConnectionDetector(DashboardActivity.this).networkDisconnected();
+                }
             }
         });
 
@@ -165,6 +172,16 @@ public class DashboardActivity extends AppCompatActivity {
 
     }
 
+    private void deleteSqlite() {
+        String deleteQuery = "DELETE FROM USERS WHERE USERID='" + sp.getString(ConstantSp.ID, "") + "'";
+        sqlDb.execSQL(deleteQuery);
+        new CommonMethod(DashboardActivity.this, "Profile Deleted Successfully");
+
+        sp.edit().clear().commit();
+        new CommonMethod(DashboardActivity.this, MainActivity.class);
+        finish();
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -172,5 +189,46 @@ public class DashboardActivity extends AppCompatActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private class doDelete extends AsyncTask<String,String,String> {
+
+        ProgressDialog pd;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pd = new ProgressDialog(DashboardActivity.this);
+            pd.setMessage("Please Wait...");
+            pd.setCancelable(false);
+            pd.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            HashMap<String,String> hashMap = new HashMap<>();
+            hashMap.put("userId",sp.getString(ConstantSp.ID,""));
+            return new MakeServiceCall().MakeServiceCall(ConstantSp.BASE_URL+"deleteProfile.php",MakeServiceCall.POST,hashMap);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            pd.dismiss();
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                if(jsonObject.getBoolean("Status")){
+                    new CommonMethod(DashboardActivity.this,jsonObject.getString("Message"));
+                    sp.edit().clear().commit();
+                    new CommonMethod(DashboardActivity.this, MainActivity.class);
+                    finish();
+                }
+                else{
+                    new CommonMethod(DashboardActivity.this,jsonObject.getString("Message"));
+                }
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
