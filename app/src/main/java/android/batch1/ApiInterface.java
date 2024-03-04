@@ -26,6 +26,25 @@ public interface ApiInterface {
             @Field("password") String password
     );
 
+    @FormUrlEncoded
+    @POST("updateProfile.php")
+    Call<GetSignupData> updateProfileData(
+            @Field("username") String username,
+            @Field("name") String name,
+            @Field("email") String email,
+            @Field("contact") String contact,
+            @Field("password") String password,
+            @Field("gender") String gender,
+            @Field("city") String city,
+            @Field("userId") String userId
+    );
+
+    @FormUrlEncoded
+    @POST("deleteProfile.php")
+    Call<GetSignupData> deleteProfileData(
+            @Field("userId") String userId
+    );
+
     /*@Multipart
     @POST("addOrganization/")
     Call<AddJobSeekerData> addOrganizationData(

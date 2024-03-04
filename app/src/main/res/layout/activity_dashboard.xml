@@ -98,6 +98,13 @@
                 android:text="Navigation Drawer" />
 
             <Button
+                android:id="@+id/dashboard_payment"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Razorpay Payment" />
+
+            <Button
                 android:id="@+id/dashboard_profile"
                 style="@style/button_16"
                 android:layout_marginHorizontal="@dimen/_20sdp"

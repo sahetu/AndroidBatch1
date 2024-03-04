@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +27,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -47,12 +52,15 @@ public class ProfileActivity extends AppCompatActivity {
     String sCity;
 
     SharedPreferences sp;
+    ApiInterface apiInterface;
+    ProgressDialog pd;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
         sp = getSharedPreferences(ConstantSp.PREF,MODE_PRIVATE);
 
         sqlDb = openOrCreateDatabase("Batch1.db",MODE_PRIVATE,null);
@@ -210,7 +218,12 @@ public class ProfileActivity extends AppCompatActivity {
                 else{
                     //updateSqlite();
                     if(new ConnectionDetector(ProfileActivity.this).networkConnected()){
-                        new doUpdate().execute();
+                        //new doUpdate().execute();
+                        pd = new ProgressDialog(ProfileActivity.this);
+                        pd.setMessage("Please Wait...");
+                        pd.setCancelable(false);
+                        pd.show();
+                        doUpdateRetrofit();
                     }
                     else{
                         new ConnectionDetector(ProfileActivity.this).networkDisconnected();
@@ -225,6 +238,56 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setData(true);
+            }
+        });
+
+    }
+
+    private void doUpdateRetrofit() {
+        Call<GetSignupData> call = apiInterface.updateProfileData(
+                username.getText().toString(),
+                name.getText().toString(),
+                email.getText().toString(),
+                contact.getText().toString(),
+                password.getText().toString(),
+                sGender,
+                sCity,
+                sp.getString(ConstantSp.ID,"")
+        );
+
+        call.enqueue(new Callback<GetSignupData>() {
+            @Override
+            public void onResponse(Call<GetSignupData> call, Response<GetSignupData> response) {
+                pd.dismiss();
+                if(response.code()==200){
+                    if(response.body().status){
+                        new CommonMethod(ProfileActivity.this,response.body().message);
+
+                        sp.edit().putString(ConstantSp.USERNAME,username.getText().toString()).commit();
+                        sp.edit().putString(ConstantSp.NAME,name.getText().toString()).commit();
+                        sp.edit().putString(ConstantSp.EMAIL,email.getText().toString()).commit();
+                        sp.edit().putString(ConstantSp.CONTACT,contact.getText().toString()).commit();
+                        sp.edit().putString(ConstantSp.PASSWORD,password.getText().toString()).commit();
+                        sp.edit().putString(ConstantSp.GENDER,sGender).commit();
+                        sp.edit().putString(ConstantSp.CITY,sCity).commit();
+
+                        setData(false);
+
+                    }
+                    else{
+                        new CommonMethod(ProfileActivity.this,response.body().message);
+                    }
+                }
+                else{
+                    new CommonMethod(ProfileActivity.this,"Server Error Code : "+response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetSignupData> call, Throwable t) {
+                pd.dismiss();
+                new CommonMethod(ProfileActivity.this,t.getMessage());
+                Log.d("RESPONSE",t.getMessage());
             }
         });
 

@@ -19,18 +19,26 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class DashboardActivity extends AppCompatActivity {
 
     TextView email;
     SharedPreferences sp;
 
-    Button logout, profile, deleteProfile, userDataList,userCustomList,userRecyclerview,myntraCat,subCatTask,activityFragment,tabLayout,bottomNav,navDemo;
+    Button logout, profile, deleteProfile, userDataList,userCustomList,userRecyclerview,myntraCat,subCatTask,activityFragment,tabLayout,bottomNav,navDemo,razorpayPayment;
     SQLiteDatabase sqlDb;
+    ApiInterface apiInterface;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         /*getSupportActionBar().setTitle("Dashboard");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
@@ -64,6 +72,14 @@ public class DashboardActivity extends AppCompatActivity {
                         sp.getString(ConstantSp.CITY, "")
         );
 
+        razorpayPayment = findViewById(R.id.dashboard_payment);
+        razorpayPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CommonMethod(DashboardActivity.this,RazorpayDemoActivity.class);
+            }
+        });
+
         logout = findViewById(R.id.dashboard_logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +105,12 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //deleteSqlite();
                 if(new ConnectionDetector(DashboardActivity.this).networkConnected()){
-                    new doDelete().execute();
+                    //new doDelete().execute();
+                    pd = new ProgressDialog(DashboardActivity.this);
+                    pd.setMessage("Please Wait...");
+                    pd.setCancelable(false);
+                    pd.show();
+                    doDeleteRetrofit();
                 }
                 else{
                     new ConnectionDetector(DashboardActivity.this).networkDisconnected();
@@ -170,6 +191,40 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void doDeleteRetrofit() {
+        Call<GetSignupData> call = apiInterface.deleteProfileData(
+                sp.getString(ConstantSp.ID,"")
+        );
+
+        call.enqueue(new Callback<GetSignupData>() {
+            @Override
+            public void onResponse(Call<GetSignupData> call, Response<GetSignupData> response) {
+                pd.dismiss();
+                if(response.code()==200){
+                    if(response.body().status){
+                        new CommonMethod(DashboardActivity.this,response.body().message);
+                        sp.edit().clear().commit();
+                        new CommonMethod(DashboardActivity.this, MainActivity.class);
+                        finish();
+                    }
+                    else{
+                        new CommonMethod(DashboardActivity.this,response.body().message);
+                    }
+                }
+                else{
+                    new CommonMethod(DashboardActivity.this,"Server Error Code : "+response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetSignupData> call, Throwable t) {
+                pd.dismiss();
+                new CommonMethod(DashboardActivity.this,t.getMessage());
+                Log.d("RESPONSE",t.getMessage());
+            }
+        });
     }
 
     private void deleteSqlite() {
