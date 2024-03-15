@@ -2,8 +2,8 @@ package android.batch1;
 
 public class ConstantSp {
 
-    public static final String BASE_URL = "http://192.168.1.54/OfflineAndroid/";
-
+    //public static final String BASE_URL = "http://192.168.1.54/OfflineAndroid/";
+    public static final String BASE_URL = "https://android-bb-internship.000webhostapp.com/API/";
     public static final String PREF = "pref";
     public static final String ID = "id";
     public static final String USERNAME = "username";

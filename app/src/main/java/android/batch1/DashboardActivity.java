@@ -28,7 +28,7 @@ public class DashboardActivity extends AppCompatActivity {
     TextView email;
     SharedPreferences sp;
 
-    Button logout, profile, deleteProfile, userDataList,userCustomList,userRecyclerview,myntraCat,subCatTask,activityFragment,tabLayout,bottomNav,navDemo,razorpayPayment;
+    Button logout, profile, deleteProfile, userDataList,userCustomList,userRecyclerview,myntraCat,subCatTask,activityFragment,tabLayout,bottomNav,navDemo,razorpayPayment,dynamicCategory;
     SQLiteDatabase sqlDb;
     ApiInterface apiInterface;
     ProgressDialog pd;
@@ -71,6 +71,14 @@ public class DashboardActivity extends AppCompatActivity {
                         sp.getString(ConstantSp.GENDER, "") + "\n" +
                         sp.getString(ConstantSp.CITY, "")
         );
+
+        dynamicCategory = findViewById(R.id.dashboard_recycler_dynamic_category);
+        dynamicCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CommonMethod(DashboardActivity.this, CategoryActivity.class);
+            }
+        });
 
         razorpayPayment = findViewById(R.id.dashboard_payment);
         razorpayPayment.setOnClickListener(new View.OnClickListener() {

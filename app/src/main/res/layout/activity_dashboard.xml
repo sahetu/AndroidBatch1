@@ -63,6 +63,13 @@
                 android:text="Myntra Category" />
 
             <Button
+                android:id="@+id/dashboard_recycler_dynamic_category"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Dynamic Category" />
+
+            <Button
                 android:id="@+id/dashboard_recycler_sub_category"
                 style="@style/button_16"
                 android:layout_marginHorizontal="@dimen/_20sdp"

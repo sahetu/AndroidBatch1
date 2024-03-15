@@ -1,9 +1,14 @@
 package android.batch1;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface ApiInterface {
 
@@ -45,11 +50,14 @@ public interface ApiInterface {
             @Field("userId") String userId
     );
 
-    /*@Multipart
-    @POST("addOrganization/")
-    Call<AddJobSeekerData> addOrganizationData(
-            @Part("user_longitude") RequestBody user_longitude,
+    @Multipart
+    @POST("addCategory.php")
+    Call<GetSignupData> addCategoryData(
+            @Part("name") RequestBody user_longitude,
             @Part MultipartBody.Part imagePassport
-    );*/
+    );
+
+    @GET("getCategory.php")
+    Call<GetCategoryData> getCategoryData();
 
 }
