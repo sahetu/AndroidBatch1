@@ -28,7 +28,7 @@ public class DashboardActivity extends AppCompatActivity {
     TextView email;
     SharedPreferences sp;
 
-    Button logout, profile, deleteProfile, userDataList,userCustomList,userRecyclerview,myntraCat,subCatTask,activityFragment,tabLayout,bottomNav,navDemo,razorpayPayment,dynamicCategory;
+    Button logout, profile, deleteProfile, userDataList,userCustomList,userRecyclerview,myntraCat,subCatTask,activityFragment,tabLayout,bottomNav,navDemo,razorpayPayment,dynamicCategory,notification;
     SQLiteDatabase sqlDb;
     ApiInterface apiInterface;
     ProgressDialog pd;
@@ -71,6 +71,14 @@ public class DashboardActivity extends AppCompatActivity {
                         sp.getString(ConstantSp.GENDER, "") + "\n" +
                         sp.getString(ConstantSp.CITY, "")
         );
+
+        notification = findViewById(R.id.dashboard_notification);
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CommonMethod(DashboardActivity.this,NotificationActivity.class);
+            }
+        });
 
         dynamicCategory = findViewById(R.id.dashboard_recycler_dynamic_category);
         dynamicCategory.setOnClickListener(new View.OnClickListener() {
@@ -199,6 +207,38 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        if(new ConnectionDetector(DashboardActivity.this).networkConnected()){
+            doUpdateFcm();
+        }
+        else{
+            new ConnectionDetector(DashboardActivity.this).networkDisconnected();
+        }
+
+    }
+
+    private void doUpdateFcm() {
+        Call<GetSignupData> call = apiInterface.updateFcmData(sp.getString(ConstantSp.FCM_ID,""),sp.getString(ConstantSp.ID,""));
+        call.enqueue(new Callback<GetSignupData>() {
+            @Override
+            public void onResponse(Call<GetSignupData> call, Response<GetSignupData> response) {
+                if(response.code()==200){
+                    if(response.body().status){
+                        Log.d("RESPONSE_FCM",response.body().message);
+                    }
+                    else{
+                        Log.d("RESPONSE_FCM",response.body().message);
+                    }
+                }
+                else{
+                    Log.d("RESPONSE_FCM","Server Error Code : "+response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetSignupData> call, Throwable t) {
+                Log.d("RESPONSE_FCM",t.getMessage());
+            }
+        });
     }
 
     private void doDeleteRetrofit() {

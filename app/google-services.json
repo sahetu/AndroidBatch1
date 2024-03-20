@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1023147218707",
+    "project_id": "android-offline",
+    "storage_bucket": "android-offline.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023147218707:android:8ef7c91232e72cfbd5ace6",
+        "android_client_info": {
+          "package_name": "android.batch1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9JlJWyQbWjaWmCmd2QsYT2-J-PQtbcUA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

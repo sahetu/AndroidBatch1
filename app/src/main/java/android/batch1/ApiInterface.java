@@ -60,4 +60,23 @@ public interface ApiInterface {
     @GET("getCategory.php")
     Call<GetCategoryData> getCategoryData();
 
+    @FormUrlEncoded
+    @POST("update_fcm.php")
+    Call<GetSignupData> updateFcmData(
+            @Field("fcm_token") String fcm_token,
+            @Field("userId") String userId
+    );
+
+    @FormUrlEncoded
+    @POST("getNotification.php")
+    Call<GetNotificationData> getNotificationData(
+            @Field("userId") String userId
+    );
+
+    @FormUrlEncoded
+    @POST("send_notification.php")
+    Call<GetSignupData> sendNotificationData(
+            @Field("message") String message
+    );
+
 }

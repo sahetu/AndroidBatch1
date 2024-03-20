@@ -35,6 +35,13 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/dashboard_notification"
+                style="@style/button_16"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Notification" />
+
+            <Button
                 android:id="@+id/dashboard_user_data_list"
                 style="@style/button_16"
                 android:layout_marginHorizontal="@dimen/_20sdp"

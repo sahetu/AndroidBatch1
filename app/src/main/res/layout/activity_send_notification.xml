@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SendNotificationActivity">
+
+    <EditText
+        android:id="@+id/send_notification_message"
+        style="@style/edit_15"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:gravity="start"
+        android:hint="Message"
+        android:maxLines="6"
+        android:minLines="3" />
+
+    <Button
+        android:id="@+id/send_notification_submit"
+        style="@style/button_16"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Submit" />
+
+</LinearLayout>
