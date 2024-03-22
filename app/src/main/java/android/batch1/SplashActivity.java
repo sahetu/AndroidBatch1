@@ -19,9 +19,15 @@ import android.os.Handler;
 import android.provider.Settings;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.microsoft.clarity.Clarity;
+import com.microsoft.clarity.ClarityConfig;
+import com.microsoft.clarity.models.ApplicationFramework;
+import com.microsoft.clarity.models.LogLevel;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -38,6 +44,22 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         //getSupportActionBar().hide();
+
+        ClarityConfig config = new ClarityConfig(
+                "lkjql8morv",
+                null, // Default user id
+                LogLevel.None,
+                false, // Disallow metered network usage
+                true, // Enable web view capturing
+                Collections.singletonList("*"), // Allowed domains
+                ApplicationFramework.Native,
+                Collections.emptyList(), // Allowed activities
+                Collections.emptyList(), // Disallowed activities (ignore activities)
+                false, // Disable on low-end devices
+                null
+        );
+
+        Clarity.initialize(getApplicationContext(), config);
 
         sp = getSharedPreferences(ConstantSp.PREF, MODE_PRIVATE);
 

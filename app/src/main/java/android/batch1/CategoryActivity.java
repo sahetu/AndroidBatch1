@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.ethanhua.skeleton.Skeleton;
+import com.ethanhua.skeleton.SkeletonScreen;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -86,6 +88,23 @@ public class CategoryActivity extends AppCompatActivity {
                         }
                         CategoryAdapter adapter = new CategoryAdapter(CategoryActivity.this, arrayList);
                         recyclerView.setAdapter(adapter);
+
+                        final SkeletonScreen skeletonScreen = Skeleton.bind(recyclerView)
+                                .adapter(adapter)
+                                .load(R.layout.item_skeleton_category)
+                                .shimmer(true)
+                                .angle(45)
+                                .color(R.color.black)
+                                .duration(400)
+                                .count(arrayList.size())
+                                .show();
+                        recyclerView.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                skeletonScreen.hide();
+                            }
+                        }, 500);
+
                     }
                     else{
                         new CommonMethod(CategoryActivity.this,response.body().message);
